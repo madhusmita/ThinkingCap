@@ -9,6 +9,43 @@
 <link href="style.css"rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="src/iscroll.js"></script>
 <script type="text/javascript" src="jquery.min.js"></script>
+<script type="application/javascript">
+$(function(){
+  
+//alert(readCookie('uid'));
+    
+  var flickerAPI = "http://50.56.237.229/chscroll/examples/simple/categoryphp.php?jsoncallback=?";
+  $.getJSON( flickerAPI, {
+    tags: "mount rainier",
+    tagmode: "any",
+    format: "json"
+  })
+  .done(function( data ) {
+  
+  //alert(data.items.length);
+    $.each( data.items, function( i, item ) {
+    // alert(item.description);
+	 //alert(i);
+	$('#res').append(item.description);
+    });
+  });
+});
+//$('.cat_id').click(function(){
+//  var id=this.attr('id');
+//  alert(id);
+//  
+//  });  
+</script>
+<script>
+function set_cookie(key)
+{
+//alert(key);
+createCookie('cat_id', key, 7);
+window.open('all.htm');
+}
+</script>
+<script type="text/javascript" src="cookie.js"></script>
+
 <script type="text/javascript">
 
 var myScroll;
@@ -49,42 +86,6 @@ document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 2
 
 </script>
 
-<script type="application/javascript">
-$(function(){
-  
-//alert(readCookie('uid'));
-    
-  var flickerAPI = "http://50.56.237.229/chscroll/examples/simple/categoryphp.php?jsoncallback=?";
-  $.getJSON( flickerAPI, {
-    tags: "mount rainier",
-    tagmode: "any",
-    format: "json"
-  })
-  .done(function( data ) {
-  
-  //alert(data.items.length);
-    $.each( data.items, function( i, item ) {
-    // alert(item.description);
-	 //alert(i);
-	$('#res').append(item.description);
-    });
-  });
-});
-//$('.cat_id').click(function(){
-//  var id=this.attr('id');
-//  alert(id);
-//  
-//  });  
-</script>
-<script>
-function set_cookie(key)
-{
-//alert(key);
-createCookie('cat_id', key, 7);
-window.open('all.htm');
-}
-</script>
-<script type="text/javascript" src="cookie.js"></script>
 
 <style type="text/css" media="all">
 body,ul,li {
@@ -237,7 +238,11 @@ body {
 			<!--<a href="all.htm"> &nbsp; &nbsp;</a>
 			
 			<a href="all.htm">Any Category</a>-->
+			
 			</div>
+			<div style="width:100%; height:700px; float:left; ">
+			</div>
+			
 			</div>
 			</div>
 		
